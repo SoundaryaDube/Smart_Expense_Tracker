@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">SET</div>
+          <div>
+            <p>Smart</p>
+            <h1>Expense Tracker</h1>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Primary">
+          <a href="#overview" class="active">Overview</a>
+          <a href="#sms">SMS Scanner</a>
+          <a href="#budget">Budget Rules</a>
+          <a href="#invest">Investing</a>
+        </nav>
+
+        <div class="privacy-panel">
+          <span class="status-dot"></span>
+          <p>Local-first SMS analysis. No payment app login required.</p>
+        </div>
+      </aside>
+
+      <main>
+        <section class="topbar" id="overview">
+          <div>
+            <p class="eyebrow">Mobile SMS powered finance guard</p>
+            <h2>Track payments, catch spam, and keep next month on your side.</h2>
+          </div>
+          <button class="primary-action" id="resetDemoButton" type="button">Reset Demo</button>
+        </section>
+
+        <section class="metric-grid" aria-label="Expense overview">
+          <article class="metric-card">
+            <p>Spent This Month</p>
+            <strong id="spentAmount">Rs. 0</strong>
+            <span id="budgetUsage">0% of budget used</span>
+          </article>
+          <article class="metric-card">
+            <p>Budget Left</p>
+            <strong id="budgetLeft">Rs. 0</strong>
+            <span id="nextBudget">Next month: Rs. 0</span>
+          </article>
+          <article class="metric-card">
+            <p>Reward Points</p>
+            <strong id="rewardPoints">0</strong>
+            <span id="rewardStatus">No rule applied yet</span>
+          </article>
+          <article class="metric-card danger">
+            <p>Danger SMS</p>
+            <strong id="dangerCount">0</strong>
+            <span>Spam and phishing alerts</span>
+          </article>
+        </section>
+
+        <section class="workspace-grid">
+          <div class="panel span-8">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Live budget pulse</p>
+                <h3>Spending Progress</h3>
+              </div>
+              <span class="pill" id="burnRatePill">Healthy</span>
+            </div>
+            <div class="progress-wrap">
+              <div class="progress-track" aria-hidden="true">
+                <div class="progress-fill" id="budgetProgress"></div>
+              </div>
+              <div class="progress-labels">
+                <span>Rs. 0</span>
+                <span id="budgetLimitLabel">Rs. 0 budget</span>
+              </div>
+            </div>
+            <div class="alert-list" id="alertList"></div>
+          </div>
+
+          <div class="panel span-4">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Month-end rule</p>
+                <h3>Reward or Penalty</h3>
+              </div>
+            </div>
+            <p class="rule-copy" id="ruleCopy">
+              Stay inside budget to earn points and unlock a budget boost next month.
+            </p>
+            <button class="secondary-action full" id="applyRuleButton" type="button">Apply Month-End Rule</button>
+          </div>
+        </section>
+
+        <section class="workspace-grid" id="sms">
+          <div class="panel span-5">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">SMS scanner</p>
+                <h3>Add Mobile SMS</h3>
+              </div>
+            </div>
+            <textarea id="smsInput" rows="8" placeholder="Paste a payment, bank, UPI, wallet, OTP, or suspicious SMS here"></textarea>
+            <div class="button-row">
+              <button class="primary-action" id="scanSmsButton" type="button">Scan SMS</button>
+              <button class="ghost-action" id="loadSampleButton" type="button">Load Sample</button>
+            </div>
+            <p class="helper-text">The app reads simple SMS rules: amount, debit or credit keywords, merchant names, and risk words.</p>
+          </div>
+
+          <div class="panel span-7">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Parsed inbox</p>
+                <h3>SMS Risk Feed</h3>
+              </div>
+              <span class="pill" id="smsCount">0 messages</span>
+            </div>
+            <div class="sms-feed" id="smsFeed"></div>
+          </div>
+        </section>
+
+        <section class="workspace-grid">
+          <div class="panel span-7">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Detected transactions</p>
+                <h3>Expense Timeline</h3>
+              </div>
+            </div>
+            <div class="transaction-list" id="transactionList"></div>
+          </div>
+
+          <div class="panel span-5" id="budget">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Simple rules</p>
+                <h3>Budget and Goals</h3>
+              </div>
+            </div>
+            <form class="budget-form" id="budgetForm">
+              <label>
+                Monthly Budget
+                <input id="budgetInput" type="number" min="1000" step="500" />
+              </label>
+              <label>
+                Savings Goal
+                <input id="goalInput" type="number" min="0" step="500" />
+              </label>
+              <label>
+                Monthly Income
+                <input id="incomeInput" type="number" min="0" step="500" />
+              </label>
+              <button class="primary-action full" type="submit">Save Rules</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="workspace-grid" id="invest">
+          <div class="panel span-6">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Investing guide</p>
+                <h3>Smart Techniques</h3>
+              </div>
+            </div>
+            <div class="invest-list" id="investList"></div>
+          </div>
+
+          <div class="panel span-6">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Category split</p>
+                <h3>Where Money Goes</h3>
+              </div>
+            </div>
+            <div class="category-chart" id="categoryChart"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
