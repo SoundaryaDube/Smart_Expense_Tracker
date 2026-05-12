@@ -27,6 +27,3 @@ No build step or server is required.
 4. Use "Apply Month-End Rule" to calculate rewards or penalties.
 5. Review SIP and safety recommendations.
 
-## Notes
-
-This project is a hackathon-friendly prototype. A production mobile version would need explicit Android SMS permissions, secure on-device processing, clear consent screens, and privacy-preserving storage.
